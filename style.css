@@ -1,0 +1,20 @@
+/* body {
+  min-height: 100dvh;
+  min-width: 100dvw;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+}
+
+.logs {
+  min-height: 100dvh;
+  width: 80dvw;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  font-size: 16px;
+} */

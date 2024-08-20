@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Log log display</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <style>
+    body {
+      min-height: 100dvh;
+      min-width: 100dvw;
+      background-color: aliceblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px;
+    }
+
+    #logs {
+      min-height: 100dvh;
+      width: 80dvw;
+      background-color: aliceblue;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      font-size: 16px;
+      justify-content: flex-start;
+    }
+  </style>
+  <body class="chat">
+    <div id="logs"></div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      let container = document.getElementById("logs");
+      socket.on("connect", function () {
+        console.log("Connected to Server");
+      });
+
+      socket.on("newMessage", function (message) {
+        console.log(message);
+        const li = document.createElement("li");
+        const node = document.createTextNode(
+          `${message["text"]}, \t\tTimeStamp: ${message["createdAt"]}`
+        );
+        li.appendChild(node);
+        container.appendChild(li);
+      });
+      socket.on("disconnect", function () {
+        console.log("Disconnected from server");
+      });
+    </script>
+  </body>
+</html>
